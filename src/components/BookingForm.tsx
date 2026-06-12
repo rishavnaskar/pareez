@@ -40,14 +40,20 @@ export default function BookingForm() {
   const [branch, setBranch] = useState(
     BRANCHES.some((b) => b.id === preselected) ? (preselected as string) : BRANCHES[0].id,
   );
+  // local date, not toISOString() — UTC would lag a day behind IST until 5:30 AM
+  const today = useMemo(() => {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(
+      d.getDate(),
+    ).padStart(2, "0")}`;
+  }, []);
+
   const [service, setService] = useState(SERVICES[0].title);
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(today);
   const [time, setTime] = useState(TIME_SLOTS[0]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
-
-  const today = useMemo(() => new Date().toISOString().split("T")[0], []);
   const valid = name.trim().length >= 2 && /^[\d\s+()-]{8,}$/.test(phone) && date !== "";
 
   const submit = (e: React.FormEvent) => {
