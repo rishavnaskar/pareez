@@ -1,69 +1,68 @@
-# Pareez Salon — Website
+# Pareez Salon — Official Website
 
-Premium marketing website for **Pareez Unisex Professional Salon** (Garfa & Jadavpur, Kolkata).
-Next.js 16 · React 19 · Tailwind CSS v4 · Framer Motion · Three.js (react-three-fiber).
+> **Live at [pareezsalon.com](https://pareezsalon.com)** · Where Trends Meet Tradition
 
-## Run it
+The official website of **Pareez Unisex Professional Salon**, Kolkata — a premium
+unisex salon with branches in **Garfa** and **Jadavpur**. Hair, skin, bridal,
+nails and grooming, with online appointment booking.
+
+![Pareez website hero](docs/preview.jpg)
+
+## Highlights
+
+- 🎨 **Premium dark theme** in the brand's black / orange / white palette
+- ✨ **Motion graphics everywhere** — an animated rendition of the Pareez logo
+  (a woman's profile drawn in light with flowing hair), a Three.js ember
+  particle field, scroll-reveal animations, 3D tilt cards, shimmer text and
+  animated counters
+- 📍 **Two branch landing pages** with embedded Google Maps and directions
+- 📅 **Appointment booking** — structured requests delivered straight to the
+  salon's WhatsApp; plus call and walk-in options
+- 🖼️ **Showcase gallery** supporting images and silent reel-style autoplay videos
+- 🔍 **Deep SEO** — `BeautySalon`/`HairSalon` JSON-LD for both branches (geo,
+  hours, 4.4★ aggregate rating), `FAQPage` schema, per-page metadata, Open
+  Graph image generated at build time, sitemap, robots, PWA manifest
+- ⚡ **100% static output** — every route prerendered for instant loads
+
+## Stack
+
+| | |
+|---|---|
+| Framework | Next.js 16 (App Router, Turbopack) · React 19 · TypeScript |
+| Styling | Tailwind CSS v4 |
+| Motion | Framer Motion 12 · Three.js via @react-three/fiber |
+| Icons | lucide-react |
+| Hosting | Vercel · domain on Cloudflare Registrar |
+
+## Develop
 
 ```bash
 npm install
 npm run dev     # http://localhost:3002
-npm run build   # production build
-npm start       # serve production build on :3002
+npm run build   # production build (all routes static)
 ```
 
-## Editing content — one file
+## Editing content
 
-Almost everything a salon owner needs to change lives in **`src/lib/site.ts`**:
-phone numbers, WhatsApp number, addresses, hours, social links, rating, domain.
-The service menu lives in **`src/lib/services.ts`** (no prices are shown anywhere, by design).
+Business facts (addresses, phone/WhatsApp, hours, socials, rating) live in
+**`src/lib/site.ts`** — one file updates the whole site. The service menu is in
+**`src/lib/services.ts`** (no prices are shown anywhere, by design).
+Gallery items are defined in `src/components/GallerySection.tsx`; media files
+live in `public/gallery/`.
 
-### ⚠️ Before going live, fill in these TODOs (all in `src/lib/site.ts`)
+## Pages
 
-1. **Domain** — replace `https://pareezsalon.com` with your real domain (`SITE.url`).
-2. **Testimonials** — `src/components/TestimonialsSection.tsx` has sample reviews;
-   replace with real ones from your Google Business profile.
+`/` home · `/services` · `/gallery` · `/locations` · `/locations/garfa` ·
+`/locations/jadavpur` · `/book` · `/about` — plus generated `sitemap.xml`,
+`robots.txt`, `manifest.webmanifest` and the Open Graph image.
 
-### Replace gallery placeholders with real photos or videos
+## Sibling projects
 
-The gallery supports both images and silent looping reel-style videos
-(autoplay, muted, plays only while on screen). Put files in `public/gallery/`
-and update `GALLERY_ITEMS` in `src/components/GallerySection.tsx`:
+- `pareez-billing` — in-store billing app (Firebase)
+- `pareez-billing-admin-dashboard` — owner analytics dashboard
 
-- Image: set `src` to e.g. `/gallery/work-1.jpg`
-- Video: keep `src` as the poster and set `video` to e.g. `/gallery/reel-1.mp4`
-  (keep clips short, ~5–15 s, and under ~5 MB each — re-export from Instagram
-  works well)
+---
 
-Keep the descriptive `alt` texts — they are part of the SEO.
-
-## Appointments
-
-The booking form (`/book`) composes a structured WhatsApp message and sends it
-to `SITE.whatsapp` — bookings land in the same WhatsApp the team already uses.
-No backend needed. Later, this can be wired to the Firestore database used by
-`pareez-billing` if you want bookings inside the admin dashboard.
-
-## SEO — what's built in
-
-- **Structured data (JSON-LD)**: `BeautySalon`/`HairSalon` schema for *both*
-  branches with geo-coordinates, opening hours, your real 4.4★/308 Google
-  rating, plus `Organization`, `WebSite` and `FAQPage` schema.
-- **Per-branch landing pages** (`/locations/garfa`, `/locations/jadavpur`) —
-  these target "salon in Garfa" / "salon in Jadavpur" searches.
-- Unique titles/descriptions per page, canonical URLs, Open Graph + Twitter
-  cards with an auto-generated branded OG image, `sitemap.xml`, `robots.txt`,
-  PWA manifest, semantic HTML and descriptive alt texts.
-
-## SEO — launch checklist (do these after deploying)
-
-1. **Buy the domain** and update `SITE.url`.
-2. **Google Search Console** — verify the domain, submit `https://yourdomain/sitemap.xml`.
-3. **Google Business Profile** — on *both* branch listings, click "Add website"
-   and set the matching branch URL (`/locations/garfa`, `/locations/jadavpur`).
-   This is the single biggest local-SEO win.
-4. Add the website link to the **Instagram bio** and **Facebook page**.
-5. Ask happy clients for Google reviews regularly — rating volume is the #1
-   local ranking factor.
-6. Deploy on **Vercel** (free tier is fine): `npx vercel` from this folder, or
-   import the repo at vercel.com. Fast global hosting also boosts rankings.
+© Pareez Unisex Professional Salon, Kolkata ·
+[Instagram](https://www.instagram.com/pareezsalon/) ·
+[Facebook](https://www.facebook.com/PAREEZ.salon/)

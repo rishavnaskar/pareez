@@ -12,7 +12,6 @@ export const SITE = {
   tagline: "Where Trends Meet Tradition",
   description:
     "Pareez is Kolkata's premium unisex salon with branches in Garfa and Jadavpur. Expert haircuts, hair colour, keratin, nanoplastia, hair botox, bridal & party makeup, skin, nail and grooming services — luxury salon services made personal.",
-  // TODO: replace with your real domain once purchased (e.g. https://pareezsalon.com)
   url: "https://pareezsalon.com",
   email: "pareez.salon@gmail.com",
   foundingYear: 2016,
