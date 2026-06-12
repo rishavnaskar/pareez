@@ -54,11 +54,15 @@ export default function BookingForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
+  const [sent, setSent] = useState(false);
   const valid = name.trim().length >= 2 && /^[\d\s+()-]{8,}$/.test(phone) && date !== "";
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!valid) return;
+    if (!valid || sent) return;
+    // block double-clicks so one appointment isn't booked twice
+    setSent(true);
+    setTimeout(() => setSent(false), 8000);
     const b = BRANCHES.find((x) => x.id === branch)!;
     logBookingRequest({
       name: name.trim(),
@@ -204,11 +208,11 @@ export default function BookingForm() {
 
       <button
         type="submit"
-        disabled={!valid}
+        disabled={!valid || sent}
         className="mt-8 inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-brand px-8 py-4 text-base font-bold text-ink transition-all duration-300 hover:bg-brand-bright hover:shadow-[0_0_36px_-6px_var(--color-brand)] disabled:cursor-not-allowed disabled:opacity-40"
       >
         <CalendarCheck className="size-5" />
-        Book Appointment
+        {sent ? "Booked ✓ — opening WhatsApp…" : "Book Appointment"}
       </button>
       <p className="mt-4 text-center text-xs text-cream-dim">
         Your appointment is saved with our team instantly — WhatsApp then opens

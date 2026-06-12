@@ -57,11 +57,22 @@ function getId(storage: Storage, key: string): string {
   return id;
 }
 
+// In-memory fallback when storage is blocked (e.g. strict private mode):
+// stable within the page load, so such visitors don't all merge into one id.
+let memVisitorId: string | null = null;
+let memSessionId: string | null = null;
+
+function randomId(): string {
+  return typeof crypto !== "undefined" && "randomUUID" in crypto
+    ? crypto.randomUUID()
+    : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
 function visitorId(): string {
   try {
     return getId(window.localStorage, "pz_vid");
   } catch {
-    return "unknown";
+    return (memVisitorId ??= randomId());
   }
 }
 
@@ -69,7 +80,7 @@ function sessionId(): string {
   try {
     return getId(window.sessionStorage, "pz_sid");
   } catch {
-    return "unknown";
+    return (memSessionId ??= randomId());
   }
 }
 
@@ -115,12 +126,22 @@ function firestoreCreate(collection: string, fields: FirestoreFields): Promise<R
   }).catch(() => {});
 }
 
+// Guard against accidental double-fires (re-run effects, double clicks):
+// drop an identical event recorded within the last second.
+let lastEventKey = "";
+let lastEventAt = 0;
+
 /**
  * Record an analytics event. Safe to call anywhere on the client;
  * it is a no-op on localhost, in bots and on the server.
  */
 export function track(type: WebEventType, opts?: { label?: string; path?: string }): void {
   if (!shouldTrack()) return;
+  const key = `${type}|${opts?.path ?? window.location.pathname}|${opts?.label ?? ""}`;
+  const now = Date.now();
+  if (key === lastEventKey && now - lastEventAt < 1000) return;
+  lastEventKey = key;
+  lastEventAt = now;
   void firestoreCreate("webEvents", {
     type: str(type),
     path: str(opts?.path ?? window.location.pathname),
