@@ -62,10 +62,9 @@ export default function AboutPage() {
               <p>
                 Pareez began with a simple belief: South Kolkata deserved a
                 salon where world-class technique meets the warmth of a
-                neighbourhood studio. From our flagship at Sunny Tower on Garfa
-                Main Road, that belief grew into a community of{" "}
-                {SITE.rating.count}+ five-star regulars — and a second home in
-                Jadavpur.
+                neighbourhood studio. From Sunny Tower on Garfa Main Road to
+                Kali Bari Lane in Jadavpur, that belief grew into a community
+                of {SITE.rating.count}+ five-star regulars across two studios.
               </p>
               <p>
                 Today, our stylists and artists handle everything from a

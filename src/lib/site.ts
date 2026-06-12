@@ -46,7 +46,7 @@ export const BRANCHES: Branch[] = [
   {
     id: "garfa",
     name: "Pareez Professional Unisex Salon",
-    shortName: "Garfa (Flagship)",
+    shortName: "Garfa",
     addressLine1: "Sunny Tower, 48/1 Garfa Main Road",
     addressLine2: "Garfa, Near Garfa Police Station",
     locality: "Kolkata, West Bengal",
@@ -54,13 +54,12 @@ export const BRANCHES: Branch[] = [
     phone: "+91 78907 91339",
     phoneHref: "tel:+917890791339",
     geo: { lat: 22.4998232, lng: 88.3838564 },
-    mapsUrl:
-      "https://www.google.com/maps/place/Pareez+Professional+Unisex+Salon/@22.4998232,88.3838564,17z",
+    mapsUrl: "https://maps.app.goo.gl/FydWqLoZTAajoMTB7",
     mapsEmbedUrl:
       "https://www.google.com/maps?q=Pareez%20Professional%20Unisex%20Salon%2C%20Sunny%20Tower%2C%2048%2F1%20Garfa%20Main%20Rd%2C%20Kolkata&output=embed",
     hours: "Open every day · 10:00 AM – 9:00 PM",
     hoursShort: "10 AM – 9 PM",
-    highlights: ["Flagship branch", "Full hair, skin & bridal studio", "4.4★ on Google (308 reviews)"],
+    highlights: ["Full hair, skin & bridal studio", "4.4★ on Google (308 reviews)", "Walk-ins welcome every day"],
   },
   {
     id: "jadavpur",
@@ -73,13 +72,12 @@ export const BRANCHES: Branch[] = [
     phone: "+91 78907 91339",
     phoneHref: "tel:+917890791339",
     geo: { lat: 22.4942232, lng: 88.3697112 },
-    mapsUrl:
-      "https://www.google.com/maps/place/Pareez+Family+Salon/@22.4942232,88.3671363,17z",
+    mapsUrl: "https://maps.app.goo.gl/b5MrWwPLuwsRjmFy6",
     mapsEmbedUrl:
       "https://www.google.com/maps?q=Pareez%20Family%20Salon%2C%20Jadavpur%2C%20Kolkata&output=embed",
     hours: "Open every day · 10:00 AM – 9:00 PM",
     hoursShort: "10 AM – 9 PM",
-    highlights: ["Newest branch", "Hair · Skin · Makeup · Nail · Tattoo", "Family-friendly studio"],
+    highlights: ["Hair · Skin · Makeup · Nail · Tattoo", "Family-friendly studio", "Walk-ins welcome every day"],
   },
 ];
 

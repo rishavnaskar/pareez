@@ -17,7 +17,12 @@ function classifyLink(href: string): WebEventType | null {
   if (href.includes("wa.me/") || href.includes("api.whatsapp.com")) return "whatsapp_click";
   if (href.includes("instagram.com")) return "instagram_click";
   if (href.includes("facebook.com")) return "facebook_click";
-  if (href.includes("google.com/maps") || href.includes("maps.google")) return "directions_click";
+  if (
+    href.includes("google.com/maps") ||
+    href.includes("maps.google") ||
+    href.includes("maps.app.goo.gl")
+  )
+    return "directions_click";
   return null;
 }
 
