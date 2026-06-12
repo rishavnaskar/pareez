@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { CalendarCheck, ChevronDown } from "lucide-react";
 import { BRANCHES, SITE } from "@/lib/site";
 import { SERVICES } from "@/lib/services";
+import { logBookingRequest } from "@/lib/track";
 import { cn } from "@/lib/utils";
 
 /**
@@ -53,6 +54,16 @@ export default function BookingForm() {
     e.preventDefault();
     if (!valid) return;
     const b = BRANCHES.find((x) => x.id === branch)!;
+    logBookingRequest({
+      name: name.trim(),
+      phone: phone.trim(),
+      branchId: b.id,
+      branchName: b.shortName,
+      service,
+      date,
+      time,
+      notes: notes.trim(),
+    });
     const msg = [
       "✨ *New Appointment Request — Pareez Website*",
       "",

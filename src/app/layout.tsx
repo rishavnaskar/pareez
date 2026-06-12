@@ -5,6 +5,7 @@ import { buildLocalBusinessJsonLd } from "@/lib/jsonld";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import Analytics from "@/components/Analytics";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -91,6 +92,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <WhatsAppFloat />
+        <Analytics />
       </body>
     </html>
   );
