@@ -52,8 +52,8 @@ export default function BookPage() {
             Book your <span className="text-gradient-brand italic">appointment</span>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-center text-base text-cream-dim">
-            Pick a branch, service and time — your request goes straight to our
-            team on WhatsApp and we confirm within minutes.
+            Pick a branch, service and time — your appointment reaches our team
+            instantly, and WhatsApp keeps you in direct touch with us.
           </p>
         </Reveal>
 

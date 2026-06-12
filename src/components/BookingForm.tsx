@@ -71,7 +71,7 @@ export default function BookingForm() {
       notes: notes.trim(),
     });
     const msg = [
-      "✨ *New Appointment Request — Pareez Website*",
+      "✨ *Appointment Booked — Pareez Website*",
       "",
       `*Name:* ${name.trim()}`,
       `*Phone:* ${phone.trim()}`,
@@ -81,7 +81,7 @@ export default function BookingForm() {
       `*Preferred time:* ${time}`,
       notes.trim() ? `*Notes:* ${notes.trim()}` : "",
       "",
-      "Please confirm my slot. Thank you!",
+      "I've booked this appointment on your website. See you then!",
     ]
       .filter(Boolean)
       .join("\n");
@@ -208,11 +208,12 @@ export default function BookingForm() {
         className="mt-8 inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-brand px-8 py-4 text-base font-bold text-ink transition-all duration-300 hover:bg-brand-bright hover:shadow-[0_0_36px_-6px_var(--color-brand)] disabled:cursor-not-allowed disabled:opacity-40"
       >
         <CalendarCheck className="size-5" />
-        Confirm on WhatsApp
+        Book Appointment
       </button>
       <p className="mt-4 text-center text-xs text-cream-dim">
-        This opens WhatsApp with your request pre-filled — our team confirms
-        your slot within minutes during salon hours. Prefer to call?{" "}
+        Your appointment is saved with our team instantly — WhatsApp then opens
+        with the details so we can chat if anything needs adjusting. Prefer to
+        call?{" "}
         <a href={BRANCHES[0].phoneHref} className="font-semibold text-brand">
           {BRANCHES[0].phone}
         </a>
